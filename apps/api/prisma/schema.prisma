@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model ResearchJob {
+  id        String   @id @default(uuid())
+  query     String
+  status    String   @default("pending")
+  createdAt DateTime @default(now())
+
+  sources   ResearchSource[]
+  report    ResearchReport?
+  tasks     ResearchTask[]
+}
+
+model ResearchTask {
+  id     String  @id @default(uuid())
+  title  String
+  status String  @default("pending")
+  result String?
+
+  jobId String
+  job   ResearchJob @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@index([jobId])
+}
+
+model ResearchSource {
+  id      String @id @default(uuid())
+  url     String
+  title   String
+  content String @db.Text
+
+  jobId String
+  job   ResearchJob @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@index([jobId])
+}
+
+model ResearchReport {
+  id      String @id @default(uuid())
+  summary String
+
+  jobId String @unique
+  job   ResearchJob @relation(fields: [jobId], references: [id], onDelete: Cascade)
+}
