@@ -1,5 +1,5 @@
 import { randomUUID } from "crypto";
-import { prisma } from "../db/prisma";
+import { Prisma } from "@prisma/client";
 
 type ResearchTaskRow = {
   id: string;
@@ -9,22 +9,20 @@ type ResearchTaskRow = {
   jobId: string;
 };
 
-export async function createTasks(jobId: string, tasks: string[]) {
+export async function createTasks(db: Prisma.TransactionClient, jobId: string, tasks: string[]) {
   if (!tasks.length) {
     throw new Error("Tasks list cannot be empty");
   }
 
-  const createdTasksByInsert = await prisma.$transaction(
+  const createdTasksByInsert = await Promise.all(
     tasks.map((title) => {
       const id = randomUUID();
 
-      return (
-      prisma.$queryRaw<ResearchTaskRow[]>`
+      return db.$queryRaw<ResearchTaskRow[]>`
         INSERT INTO "ResearchTask" ("id", "title", "status", "jobId")
         VALUES (${id}, ${title}, 'pending', ${jobId})
         RETURNING "id", "title", "status", "result", "jobId"
-      `
-      );
+      `;
     })
   );
 

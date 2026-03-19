@@ -20,26 +20,33 @@ export const createResearchJob = async (req: Request, res: Response) => {
       return res.status(400).json({ error: "Query is required" });
     }
 
-    const job = await prisma.researchJob.create({
-      data: {
-        query,
-        status: "pending",
-      },
-    });
-
     const plannedTasks = mockPlanner(query);
 
     if (!plannedTasks.length) {
-      console.error("Planner returned no tasks for query", { query, jobId: job.id });
+      console.error("Planner returned no tasks for query", { query });
       return res.status(500).json({ error: "Task planner returned no tasks" });
     }
 
-    const createdTasks = await createTasks(job.id, plannedTasks);
+    const result = await prisma.$transaction(async (tx) => {
+      const job = await tx.researchJob.create({
+        data: {
+          query,
+          status: "pending",
+        },
+      });
+
+      const createdTasks = await createTasks(tx, job.id, plannedTasks);
+
+      return {
+        job,
+        createdTasks,
+      };
+    });
 
     return res.status(201).json({
-      id: job.id,
-      status: job.status,
-      tasks: createdTasks,
+      id: result.job.id,
+      status: result.job.status,
+      tasks: result.createdTasks,
     });
   } catch (error) {
     console.error("Failed to create research job", error);

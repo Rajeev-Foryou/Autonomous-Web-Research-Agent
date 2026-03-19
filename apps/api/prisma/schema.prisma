@@ -24,17 +24,21 @@ model ResearchTask {
   result String?
 
   jobId String
-  job   ResearchJob @relation(fields: [jobId], references: [id])
+  job   ResearchJob @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@index([jobId])
 }
 
 model ResearchSource {
   id      String @id @default(uuid())
   url     String
   title   String
-  content String
+  content String @db.Text
 
   jobId String
-  job   ResearchJob @relation(fields: [jobId], references: [id])
+  job   ResearchJob @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@index([jobId])
 }
 
 model ResearchReport {
@@ -42,5 +46,5 @@ model ResearchReport {
   summary String
 
   jobId String @unique
-  job   ResearchJob @relation(fields: [jobId], references: [id])
+  job   ResearchJob @relation(fields: [jobId], references: [id], onDelete: Cascade)
 }
