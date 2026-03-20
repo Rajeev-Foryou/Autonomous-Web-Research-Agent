@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "worker": "ts-node-dev --respawn --transpile-only src/workers/research.worker.ts",
     "build": "tsc -p tsconfig.json",
     "prisma:generate": "prisma generate --schema prisma/schema.prisma",
     "postinstall": "npm run prisma:generate"
@@ -13,9 +14,11 @@
     "@autonomous/types": "file:../../packages/types",
     "@prisma/adapter-pg": "^7.5.0",
     "@prisma/client": "^7.5.0",
+    "bullmq": "^5.71.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "ioredis": "^5.10.1",
     "pg": "^8.20.0",
     "prisma": "^7.5.0"
   },
