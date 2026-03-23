@@ -2,6 +2,7 @@ import { Worker } from "bullmq";
 import "../config/env";
 import { prisma } from "../db/prisma";
 import { redisConnection } from "../queue/redis.connection";
+import { fallbackTasks, plannerAgent } from "../agents/planner.agent";
 
 const worker = new Worker<{ jobId: string }>(
   "research-queue",
@@ -19,13 +20,49 @@ const worker = new Worker<{ jobId: string }>(
     });
 
     try {
+      const researchJob = await prisma.researchJob.findUnique({
+        where: { id: jobId },
+        select: { id: true, query: true, status: true },
+      });
+
+      if (!researchJob) {
+        throw new Error(`ResearchJob not found for id: ${jobId}`);
+      }
+
       await prisma.researchJob.update({
         where: { id: jobId },
         data: { status: "running" },
       });
 
-      // Simulated async work until planner/research agent execution is integrated.
-      await new Promise((resolve) => setTimeout(resolve, 1200));
+      const existingTaskCount = await prisma.researchTask.count({
+        where: { jobId },
+      });
+
+      if (existingTaskCount === 0) {
+        let tasks = await plannerAgent(researchJob.query);
+
+        if (!tasks.length) {
+          console.warn("[worker] planner returned no tasks; falling back", {
+            queueJobId: job.id,
+            researchJobId: jobId,
+          });
+          tasks = fallbackTasks(researchJob.query);
+        }
+
+        await prisma.researchTask.createMany({
+          data: tasks.map((title) => ({
+            title,
+            status: "pending",
+            jobId,
+          })),
+        });
+      } else {
+        console.log("[worker] tasks already exist for job; skipping insertion", {
+          queueJobId: job.id,
+          researchJobId: jobId,
+          existingTaskCount,
+        });
+      }
 
       await prisma.researchJob.update({
         where: { id: jobId },
@@ -43,12 +80,18 @@ const worker = new Worker<{ jobId: string }>(
         error,
       });
 
-      await prisma.researchJob.update({
-        where: { id: jobId },
-        data: { status: "failed" },
-      });
-
-      throw error;
+      try {
+        await prisma.researchJob.update({
+          where: { id: jobId },
+          data: { status: "failed" },
+        });
+      } catch (updateError) {
+        console.error("[worker] failed to update job status to failed", {
+          queueJobId: job.id,
+          researchJobId: jobId,
+          updateError,
+        });
+      }
     }
   },
   {
