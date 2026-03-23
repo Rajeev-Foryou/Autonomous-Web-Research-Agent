@@ -1,4 +1,4 @@
-import { groqClient } from "../ai/groq.client";
+import { groqClient, groqTimeoutMs } from "../ai/groq.client";
 import { plannerPrompt } from "../ai/prompts/planner.prompt";
 
 export function fallbackTasks(query: string): string[] {
@@ -69,6 +69,8 @@ export async function plannerAgent(query: string): Promise<string[]> {
           content: subject,
         },
       ],
+    }, {
+      timeout: groqTimeoutMs,
     });
 
     const content = response.choices?.[0]?.message?.content;
