@@ -1,9 +1,11 @@
 import { Worker } from "bullmq";
+import pLimit from "p-limit";
 import "../config/env";
 import { prisma } from "../db/prisma";
 import { redisConnection } from "../queue/redis.connection";
 import { fallbackTasks, plannerAgent } from "../agents/planner.agent";
 import { researchAgent } from "../agents/research.agent";
+import { smartScraperAgent } from "../agents/smartScraper.agent";
 
 function normalizeTaskTitle(value: string): string {
   return value.trim().toLowerCase();
@@ -12,6 +14,8 @@ function normalizeTaskTitle(value: string): string {
 function normalizeUrl(value: string): string {
   return value.trim().toLowerCase();
 }
+
+const scrapeLimit = pLimit(2);
 
 const worker = new Worker<{ jobId: string }>(
   "research-queue",
@@ -167,17 +171,44 @@ const worker = new Worker<{ jobId: string }>(
             return true;
           });
 
+          console.log("[worker] scraping started", {
+            queueJobId: job.id,
+            researchJobId: jobId,
+            taskId: task.id,
+            task: task.title,
+            candidateCount: uniqueResultsForInsert.length,
+          });
+
+          const scrapedSources = await Promise.all(
+            uniqueResultsForInsert.map((result) =>
+              scrapeLimit(async () => {
+                const scrapedContent = await smartScraperAgent(result.url);
+                const contentToStore = scrapedContent || result.content || "";
+
+                return {
+                  title: result.title,
+                  url: result.url,
+                  content: contentToStore,
+                };
+              })
+            )
+          );
+
+          const sourcesForInsert = scrapedSources.filter((item) => {
+            return item.url.trim().length > 0;
+          });
+
           console.log("[worker] storing task sources", {
             queueJobId: job.id,
             researchJobId: jobId,
             taskId: task.id,
             task: task.title,
-            insertCount: uniqueResultsForInsert.length,
+            insertCount: sourcesForInsert.length,
           });
 
-          if (uniqueResultsForInsert.length > 0) {
+          if (sourcesForInsert.length > 0) {
             await prisma.researchSource.createMany({
-              data: uniqueResultsForInsert.map((result) => ({
+              data: sourcesForInsert.map((result) => ({
                 jobId,
                 title: result.title,
                 url: result.url,
@@ -190,7 +221,7 @@ const worker = new Worker<{ jobId: string }>(
             where: { id: task.id },
             data: {
               status: "completed",
-              result: `Fetched ${results.length} result(s), stored ${uniqueResultsForInsert.length} new source(s)`,
+              result: `Fetched ${results.length} result(s), stored ${sourcesForInsert.length} new source(s)`,
             },
           });
         } catch (taskError) {
