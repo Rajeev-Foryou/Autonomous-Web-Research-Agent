@@ -3,6 +3,15 @@ import "../config/env";
 import { prisma } from "../db/prisma";
 import { redisConnection } from "../queue/redis.connection";
 import { fallbackTasks, plannerAgent } from "../agents/planner.agent";
+import { researchAgent } from "../agents/research.agent";
+
+function normalizeTaskTitle(value: string): string {
+  return value.trim().toLowerCase();
+}
+
+function normalizeUrl(value: string): string {
+  return value.trim().toLowerCase();
+}
 
 const worker = new Worker<{ jobId: string }>(
   "research-queue",
@@ -34,34 +43,182 @@ const worker = new Worker<{ jobId: string }>(
         data: { status: "running" },
       });
 
-      const existingTaskCount = await prisma.researchTask.count({
+      let plannedTasks = await plannerAgent(researchJob.query);
+
+      if (!plannedTasks.length) {
+        console.warn("[worker] planner returned no tasks; falling back", {
+          queueJobId: job.id,
+          researchJobId: jobId,
+        });
+        plannedTasks = fallbackTasks(researchJob.query);
+      }
+
+      const existingTasks = await prisma.researchTask.findMany({
         where: { jobId },
+        select: {
+          id: true,
+          title: true,
+          status: true,
+        },
       });
 
-      if (existingTaskCount === 0) {
-        let tasks = await plannerAgent(researchJob.query);
+      const existingTaskTitleSet = new Set(existingTasks.map((task) => normalizeTaskTitle(task.title)));
+      const newTaskTitles: string[] = [];
 
-        if (!tasks.length) {
-          console.warn("[worker] planner returned no tasks; falling back", {
-            queueJobId: job.id,
-            researchJobId: jobId,
-          });
-          tasks = fallbackTasks(researchJob.query);
+      for (const taskTitle of plannedTasks) {
+        const normalizedTitle = normalizeTaskTitle(taskTitle);
+
+        if (!normalizedTitle || existingTaskTitleSet.has(normalizedTitle)) {
+          continue;
         }
 
+        existingTaskTitleSet.add(normalizedTitle);
+        newTaskTitles.push(taskTitle.trim());
+      }
+
+      if (newTaskTitles.length > 0) {
         await prisma.researchTask.createMany({
-          data: tasks.map((title) => ({
+          data: newTaskTitles.map((title) => ({
             title,
             status: "pending",
             jobId,
           })),
         });
-      } else {
-        console.log("[worker] tasks already exist for job; skipping insertion", {
+
+        console.log("[worker] inserted planned tasks", {
           queueJobId: job.id,
           researchJobId: jobId,
-          existingTaskCount,
+          insertedTaskCount: newTaskTitles.length,
         });
+      } else {
+        console.log("[worker] no new tasks to insert", {
+          queueJobId: job.id,
+          researchJobId: jobId,
+        });
+      }
+
+      const tasksToProcess = await prisma.researchTask.findMany({
+        where: {
+          jobId,
+          status: {
+            not: "completed",
+          },
+        },
+        select: {
+          id: true,
+          title: true,
+          status: true,
+        },
+        orderBy: {
+          id: "asc",
+        },
+      });
+
+      const existingSourceRows = await prisma.researchSource.findMany({
+        where: { jobId },
+        select: { url: true },
+      });
+
+      const existingSourceUrlSet = new Set(existingSourceRows.map((row) => normalizeUrl(row.url)));
+
+      for (const task of tasksToProcess) {
+        console.log("[worker] task started", {
+          queueJobId: job.id,
+          researchJobId: jobId,
+          taskId: task.id,
+          task: task.title,
+        });
+
+        try {
+          await prisma.researchTask.update({
+            where: { id: task.id },
+            data: { status: "running" },
+          });
+
+          const results = await researchAgent(task.title);
+
+          console.log("[worker] task fetched results", {
+            queueJobId: job.id,
+            researchJobId: jobId,
+            taskId: task.id,
+            task: task.title,
+            fetchedCount: results.length,
+          });
+
+          if (results.length === 0) {
+            await prisma.researchTask.update({
+              where: { id: task.id },
+              data: {
+                status: "completed",
+                result: "No results returned from research provider",
+              },
+            });
+            continue;
+          }
+
+          const uniqueResultsForInsert = results.filter((result) => {
+            const normalizedResultUrl = normalizeUrl(result.url);
+
+            if (!normalizedResultUrl || existingSourceUrlSet.has(normalizedResultUrl)) {
+              return false;
+            }
+
+            existingSourceUrlSet.add(normalizedResultUrl);
+            return true;
+          });
+
+          console.log("[worker] storing task sources", {
+            queueJobId: job.id,
+            researchJobId: jobId,
+            taskId: task.id,
+            task: task.title,
+            insertCount: uniqueResultsForInsert.length,
+          });
+
+          if (uniqueResultsForInsert.length > 0) {
+            await prisma.researchSource.createMany({
+              data: uniqueResultsForInsert.map((result) => ({
+                jobId,
+                title: result.title,
+                url: result.url,
+                content: result.content,
+              })),
+            });
+          }
+
+          await prisma.researchTask.update({
+            where: { id: task.id },
+            data: {
+              status: "completed",
+              result: `Fetched ${results.length} result(s), stored ${uniqueResultsForInsert.length} new source(s)`,
+            },
+          });
+        } catch (taskError) {
+          console.error("[worker] task processing failed", {
+            queueJobId: job.id,
+            researchJobId: jobId,
+            taskId: task.id,
+            task: task.title,
+            taskError,
+          });
+
+          try {
+            await prisma.researchTask.update({
+              where: { id: task.id },
+              data: {
+                status: "failed",
+                result: "Task processing failed",
+              },
+            });
+          } catch (taskUpdateError) {
+            console.error("[worker] failed to mark task as failed", {
+              queueJobId: job.id,
+              researchJobId: jobId,
+              taskId: task.id,
+              taskUpdateError,
+            });
+          }
+        }
       }
 
       await prisma.researchJob.update({
