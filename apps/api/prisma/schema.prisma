@@ -10,6 +10,7 @@ model ResearchJob {
   id        String   @id @default(uuid())
   query     String
   status    String   @default("pending")
+  currentStage String @default("pending")
   createdAt DateTime @default(now())
 
   sources   ResearchSource[]
@@ -43,7 +44,7 @@ model ResearchSource {
 
 model ResearchReport {
   id      String @id @default(uuid())
-  summary String
+  content String
 
   jobId String @unique
   job   ResearchJob @relation(fields: [jobId], references: [id], onDelete: Cascade)

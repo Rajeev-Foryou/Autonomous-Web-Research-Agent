@@ -1,4 +1,5 @@
 import { chromium } from "playwright";
+import { logger } from "../lib/logger";
 
 const MAX_CONTENT_LENGTH = 5_000;
 
@@ -31,7 +32,8 @@ export async function playwrightScraperAgent(url: string): Promise<string> {
 
     return content.replace(/\s+/g, " ").trim().slice(0, MAX_CONTENT_LENGTH);
   } catch (error) {
-    console.error("[playwright-scraper-agent] dynamic scraping failed", {
+    logger.error({
+      stage: "scraper_playwright_failed",
       url,
       error,
     });
@@ -41,7 +43,8 @@ export async function playwrightScraperAgent(url: string): Promise<string> {
       try {
         await browser.close();
       } catch (closeError) {
-        console.error("[playwright-scraper-agent] failed to close browser", {
+        logger.error({
+          stage: "scraper_playwright_close_failed",
           url,
           closeError,
         });

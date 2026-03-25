@@ -6,6 +6,8 @@ import { redisConnection } from "../queue/redis.connection";
 import { fallbackTasks, plannerAgent } from "../agents/planner.agent";
 import { researchAgent } from "../agents/research.agent";
 import { smartScraperAgent } from "../agents/smartScraper.agent";
+import { summarizerAgent } from "../agents/summarizer.agent";
+import { logger } from "../lib/logger";
 
 function normalizeTaskTitle(value: string): string {
   return value.trim().toLowerCase();
@@ -15,22 +17,52 @@ function normalizeUrl(value: string): string {
   return value.trim().toLowerCase();
 }
 
+function getErrorMessage(error: unknown): string {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  return String(error);
+}
+
+async function updateJobStage(jobId: string, currentStage: string, status?: string): Promise<void> {
+  const data: Record<string, string> = {
+    currentStage,
+  };
+
+  if (status) {
+    data.status = status;
+  }
+
+  await prisma.researchJob.update({
+    where: { id: jobId },
+    data: data as never,
+  });
+}
+
 const scrapeLimit = pLimit(2);
+
+const MAX_SOURCES = 6;
+const MAX_SOURCE_CHARS = 800;
+const MAX_FINAL_CHARS = 4000;
+const SUMMARIZE_DELAY_MS = 1500;
+
+const delay = (ms: number) =>
+  new Promise<void>((resolve) => {
+    setTimeout(resolve, ms);
+  });
 
 const worker = new Worker<{ jobId: string }>(
   "research-queue",
   async (job) => {
+    const jobStart = Date.now();
     const { jobId } = job.data ?? {};
 
     if (!jobId || typeof jobId !== "string") {
       throw new Error("Invalid payload: jobId is required");
     }
 
-    console.log("[worker] starting research job", {
-      queueJobId: job.id,
-      researchJobId: jobId,
-      name: job.name,
-    });
+    logger.info({ jobId, stage: "worker_started" });
 
     try {
       const researchJob = await prisma.researchJob.findUnique({
@@ -42,20 +74,34 @@ const worker = new Worker<{ jobId: string }>(
         throw new Error(`ResearchJob not found for id: ${jobId}`);
       }
 
-      await prisma.researchJob.update({
-        where: { id: jobId },
-        data: { status: "running" },
-      });
+      await updateJobStage(jobId, "planning", "running");
 
-      let plannedTasks = await plannerAgent(researchJob.query);
+      logger.info({ jobId, stage: "planner_started" });
 
-      if (!plannedTasks.length) {
-        console.warn("[worker] planner returned no tasks; falling back", {
-          queueJobId: job.id,
-          researchJobId: jobId,
+      const plannerStart = Date.now();
+      let plannedTasks: string[];
+
+      try {
+        plannedTasks = await plannerAgent(researchJob.query);
+      } catch (error) {
+        logger.error({
+          jobId,
+          stage: "planner_failed",
+          error: getErrorMessage(error),
         });
         plannedTasks = fallbackTasks(researchJob.query);
       }
+
+      if (!plannedTasks.length) {
+        plannedTasks = fallbackTasks(researchJob.query);
+      }
+
+      logger.info({
+        jobId,
+        stage: "planner_completed",
+        taskCount: plannedTasks.length,
+        planner_ms: Date.now() - plannerStart,
+      });
 
       const existingTasks = await prisma.researchTask.findMany({
         where: { jobId },
@@ -88,18 +134,11 @@ const worker = new Worker<{ jobId: string }>(
             jobId,
           })),
         });
-
-        console.log("[worker] inserted planned tasks", {
-          queueJobId: job.id,
-          researchJobId: jobId,
-          insertedTaskCount: newTaskTitles.length,
-        });
-      } else {
-        console.log("[worker] no new tasks to insert", {
-          queueJobId: job.id,
-          researchJobId: jobId,
-        });
       }
+
+      await updateJobStage(jobId, "research");
+
+      logger.info({ jobId, stage: "research_started" });
 
       const tasksToProcess = await prisma.researchTask.findMany({
         where: {
@@ -124,30 +163,26 @@ const worker = new Worker<{ jobId: string }>(
       });
 
       const existingSourceUrlSet = new Set(existingSourceRows.map((row) => normalizeUrl(row.url)));
+      let researchMs = 0;
+      let scrapeMs = 0;
+      let urlsFetched = 0;
+      let sourcesStored = 0;
+
+      await updateJobStage(jobId, "scraping");
+
+      logger.info({ jobId, stage: "scraping_started" });
 
       for (const task of tasksToProcess) {
-        console.log("[worker] task started", {
-          queueJobId: job.id,
-          researchJobId: jobId,
-          taskId: task.id,
-          task: task.title,
-        });
-
         try {
           await prisma.researchTask.update({
             where: { id: task.id },
             data: { status: "running" },
           });
 
+          const researchStart = Date.now();
           const results = await researchAgent(task.title);
-
-          console.log("[worker] task fetched results", {
-            queueJobId: job.id,
-            researchJobId: jobId,
-            taskId: task.id,
-            task: task.title,
-            fetchedCount: results.length,
-          });
+          researchMs += Date.now() - researchStart;
+          urlsFetched += results.length;
 
           if (results.length === 0) {
             await prisma.researchTask.update({
@@ -171,39 +206,36 @@ const worker = new Worker<{ jobId: string }>(
             return true;
           });
 
-          console.log("[worker] scraping started", {
-            queueJobId: job.id,
-            researchJobId: jobId,
-            taskId: task.id,
-            task: task.title,
-            candidateCount: uniqueResultsForInsert.length,
-          });
-
+          const scrapeStart = Date.now();
           const scrapedSources = await Promise.all(
             uniqueResultsForInsert.map((result) =>
               scrapeLimit(async () => {
-                const scrapedContent = await smartScraperAgent(result.url);
-                const contentToStore = scrapedContent || result.content || "";
+                try {
+                  const scrapedContent = await smartScraperAgent(result.url);
+                  const contentToStore = scrapedContent || result.content || "";
 
-                return {
-                  title: result.title,
-                  url: result.url,
-                  content: contentToStore,
-                };
+                  return {
+                    title: result.title,
+                    url: result.url,
+                    content: contentToStore,
+                  };
+                } catch (error) {
+                  logger.error({
+                    jobId,
+                    stage: "scraping_failed",
+                    taskId: task.id,
+                    url: result.url,
+                    error: getErrorMessage(error),
+                  });
+                  return null;
+                }
               })
             )
           );
+          scrapeMs += Date.now() - scrapeStart;
 
-          const sourcesForInsert = scrapedSources.filter((item) => {
-            return item.url.trim().length > 0;
-          });
-
-          console.log("[worker] storing task sources", {
-            queueJobId: job.id,
-            researchJobId: jobId,
-            taskId: task.id,
-            task: task.title,
-            insertCount: sourcesForInsert.length,
+          const sourcesForInsert = scrapedSources.filter((item): item is { title: string; url: string; content: string } => {
+            return item !== null && item.url.trim().length > 0;
           });
 
           if (sourcesForInsert.length > 0) {
@@ -215,6 +247,7 @@ const worker = new Worker<{ jobId: string }>(
                 content: result.content,
               })),
             });
+            sourcesStored += sourcesForInsert.length;
           }
 
           await prisma.researchTask.update({
@@ -225,12 +258,11 @@ const worker = new Worker<{ jobId: string }>(
             },
           });
         } catch (taskError) {
-          console.error("[worker] task processing failed", {
-            queueJobId: job.id,
-            researchJobId: jobId,
+          logger.error({
+            jobId,
+            stage: "research_failed",
             taskId: task.id,
-            task: task.title,
-            taskError,
+            error: getErrorMessage(taskError),
           });
 
           try {
@@ -242,44 +274,136 @@ const worker = new Worker<{ jobId: string }>(
               },
             });
           } catch (taskUpdateError) {
-            console.error("[worker] failed to mark task as failed", {
-              queueJobId: job.id,
-              researchJobId: jobId,
+            logger.error({
+              jobId,
+              stage: "task_update_failed",
               taskId: task.id,
-              taskUpdateError,
+              error: getErrorMessage(taskUpdateError),
             });
           }
         }
       }
 
-      await prisma.researchJob.update({
-        where: { id: jobId },
-        data: { status: "completed" },
+      logger.info({
+        jobId,
+        stage: "research_completed",
+        urlsFetched,
+        research_ms: researchMs,
       });
 
-      console.log("[worker] research job completed", {
-        queueJobId: job.id,
-        researchJobId: jobId,
+      logger.info({
+        jobId,
+        stage: "scraping_completed",
+        sources: sourcesStored,
+        scrape_ms: scrapeMs,
       });
+
+      await updateJobStage(jobId, "summarizing");
+
+      logger.info({ jobId, stage: "summarization_started" });
+
+      const summarizeStart = Date.now();
+      const sources = await prisma.researchSource.findMany({
+        where: { jobId },
+        select: { title: true, url: true, content: true },
+      });
+
+      if (sources.length > 0) {
+        try {
+          const sourcesWithStatus = sources.map((source) => ({
+            ...source,
+            scrapeSuccess: source.content.trim().length > 0,
+          }));
+          const validSources = sourcesWithStatus.filter((source) => source.scrapeSuccess);
+          const selectedSources = validSources.slice(0, MAX_SOURCES);
+
+          logger.info({
+            jobId,
+            stage: "summarization_config",
+            sources_used: selectedSources.length,
+            chars_per_source: MAX_SOURCE_CHARS,
+          });
+
+          const sourceSummaries: string[] = [];
+
+          for (const source of selectedSources) {
+            const input = source.content.slice(0, MAX_SOURCE_CHARS);
+            const summary = await summarizerAgent(input);
+            sourceSummaries.push(summary);
+            await delay(SUMMARIZE_DELAY_MS);
+          }
+
+          const combinedSummary = sourceSummaries.join("\n\n");
+          const safeCombined = combinedSummary.slice(0, MAX_FINAL_CHARS);
+          const finalReport = await summarizerAgent(safeCombined);
+
+          logger.info({ jobId, stage: "report_persist_start" });
+
+          await prisma.researchReport.upsert({
+            where: { jobId },
+            update: {
+              content: finalReport,
+            },
+            create: {
+              content: finalReport,
+              jobId,
+            },
+          });
+
+          logger.info({ jobId, stage: "report_persist_done" });
+          logger.info({
+            jobId,
+            stage: "summarization_completed",
+            combined_summary_length: combinedSummary.length,
+            summarize_ms: Date.now() - summarizeStart,
+          });
+        } catch (error) {
+          logger.error({
+            jobId,
+            stage: "summarization_failed",
+            error: getErrorMessage(error),
+          });
+          throw error;
+        }
+      } else {
+        logger.info({
+          jobId,
+          stage: "summarization_completed",
+          combined_summary_length: 0,
+          summarize_ms: Date.now() - summarizeStart,
+        });
+      }
+
+      await updateJobStage(jobId, "completed", "completed");
+
+      logger.info({ jobId, stage: "job_completed" });
     } catch (error) {
-      console.error("[worker] research job processing failed", {
-        queueJobId: job.id,
-        researchJobId: jobId,
-        error,
+      logger.error({
+        jobId,
+        stage: "job_failed",
+        error: getErrorMessage(error),
       });
 
       try {
         await prisma.researchJob.update({
           where: { id: jobId },
-          data: { status: "failed" },
+          data: {
+            status: "failed",
+          },
         });
       } catch (updateError) {
-        console.error("[worker] failed to update job status to failed", {
-          queueJobId: job.id,
-          researchJobId: jobId,
-          updateError,
+        logger.error({
+          jobId,
+          stage: "job_status_update_failed",
+          error: getErrorMessage(updateError),
         });
       }
+    } finally {
+      logger.info({
+        jobId,
+        stage: "total_job_time",
+        total_job_ms: Date.now() - jobStart,
+      });
     }
   },
   {
@@ -288,22 +412,29 @@ const worker = new Worker<{ jobId: string }>(
 );
 
 worker.on("completed", (job) => {
-  console.log("[worker:event] completed", {
-    queueJobId: job.id,
-    researchJobId: job.data?.jobId,
+  logger.info({
+    jobId: job.data?.jobId,
+    stage: "worker_event_completed",
   });
 });
 
 worker.on("failed", (job, err) => {
-  console.error("[worker:event] failed", {
-    queueJobId: job?.id,
-    researchJobId: job?.data?.jobId,
-    message: err.message,
+  logger.error({
+    jobId: job?.data?.jobId,
+    stage: "worker_event_failed",
+    error: err.message,
   });
 });
 
 worker.on("error", (error) => {
-  console.error("[worker:event] worker error", error);
+  logger.error({
+    jobId: null,
+    stage: "worker_error",
+    error: getErrorMessage(error),
+  });
 });
 
-console.log("[worker] research worker started and waiting for jobs");
+logger.info({
+  jobId: null,
+  stage: "worker_booted",
+});
