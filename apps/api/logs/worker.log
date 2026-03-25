@@ -1,0 +1,116 @@
+{"level":30,"time":1774442917038,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_booted"}
+{"level":30,"time":1774442917035,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_booted"}
+{"level":30,"time":1774443003713,"pid":33248,"hostname":"Rajeev","jobId":"93d64742-c212-43d1-a311-2167e539df18","stage":"worker_started"}
+{"level":30,"time":1774443004990,"pid":33248,"hostname":"Rajeev","jobId":"93d64742-c212-43d1-a311-2167e539df18","stage":"planner_started"}
+{"level":30,"time":1774443005427,"pid":33248,"hostname":"Rajeev","jobId":"93d64742-c212-43d1-a311-2167e539df18","stage":"planner_completed","taskCount":5,"planner_ms":437}
+{"level":30,"time":1774443006001,"pid":33248,"hostname":"Rajeev","jobId":"93d64742-c212-43d1-a311-2167e539df18","stage":"research_started"}
+{"level":30,"time":1774443006337,"pid":33248,"hostname":"Rajeev","jobId":"93d64742-c212-43d1-a311-2167e539df18","stage":"scraping_started"}
+{"level":30,"time":1774443019190,"pid":33248,"hostname":"Rajeev","stage":"smart_scraper_fallback_playwright","url":"https://www.xurrent.com/blog/log-levels"}
+{"level":50,"time":1774443019218,"pid":33248,"hostname":"Rajeev","stage":"scraper_playwright_failed","url":"https://www.xurrent.com/blog/log-levels","error":{"name":"Error"}}
+{"level":30,"time":1774443028944,"pid":33248,"hostname":"Rajeev","stage":"smart_scraper_force_playwright","url":"https://sridhar-rao.medium.com/logging-frameworks-and-approaches-7d67bfc71014"}
+{"level":50,"time":1774443028951,"pid":33248,"hostname":"Rajeev","stage":"scraper_playwright_failed","url":"https://sridhar-rao.medium.com/logging-frameworks-and-approaches-7d67bfc71014","error":{"name":"Error"}}
+{"level":30,"time":1774443037309,"pid":33248,"hostname":"Rajeev","jobId":"93d64742-c212-43d1-a311-2167e539df18","stage":"research_completed","urlsFetched":25,"research_ms":11838}
+{"level":30,"time":1774443037309,"pid":33248,"hostname":"Rajeev","jobId":"93d64742-c212-43d1-a311-2167e539df18","stage":"scraping_completed","sources":25,"scrape_ms":15924}
+{"level":30,"time":1774443037416,"pid":33248,"hostname":"Rajeev","jobId":"93d64742-c212-43d1-a311-2167e539df18","stage":"summarization_started"}
+{"level":30,"time":1774443037787,"pid":33248,"hostname":"Rajeev","jobId":"93d64742-c212-43d1-a311-2167e539df18","stage":"summarization_config","sources_used":6,"chars_per_source":800}
+{"level":30,"time":1774443042953,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_booted"}
+{"level":30,"time":1774443049549,"pid":33248,"hostname":"Rajeev","jobId":"93d64742-c212-43d1-a311-2167e539df18","stage":"report_persist_start"}
+{"level":30,"time":1774443050560,"pid":33248,"hostname":"Rajeev","jobId":"93d64742-c212-43d1-a311-2167e539df18","stage":"report_persist_done"}
+{"level":30,"time":1774443050560,"pid":33248,"hostname":"Rajeev","jobId":"93d64742-c212-43d1-a311-2167e539df18","stage":"summarization_completed","combined_summary_length":4128,"summarize_ms":13144}
+{"level":30,"time":1774443050680,"pid":33248,"hostname":"Rajeev","jobId":"93d64742-c212-43d1-a311-2167e539df18","stage":"job_completed"}
+{"level":30,"time":1774443050681,"pid":33248,"hostname":"Rajeev","jobId":"93d64742-c212-43d1-a311-2167e539df18","stage":"total_job_time","total_job_ms":46968}
+{"level":30,"time":1774443050806,"pid":33248,"hostname":"Rajeev","jobId":"93d64742-c212-43d1-a311-2167e539df18","stage":"worker_event_completed"}
+{"level":30,"time":1774443055448,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"worker_started"}
+{"level":30,"time":1774443056754,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"planner_started"}
+{"level":30,"time":1774443057082,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"planner_completed","taskCount":5,"planner_ms":328}
+{"level":30,"time":1774443057620,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"research_started"}
+{"level":30,"time":1774443057945,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"scraping_started"}
+{"level":30,"time":1774443069429,"pid":8112,"hostname":"Rajeev","stage":"smart_scraper_force_playwright","url":"https://medium.com/runners-life/creating-a-sample-of-marathon-race-results-for-age-analysis-a738011c2a3c"}
+{"level":50,"time":1774443069456,"pid":8112,"hostname":"Rajeev","stage":"scraper_playwright_failed","url":"https://medium.com/runners-life/creating-a-sample-of-marathon-race-results-for-age-analysis-a738011c2a3c","error":{"name":"Error"}}
+{"level":50,"time":1774443995401,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774443995452,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774443995404,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774443995491,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774443995793,"pid":8112,"hostname":"Rajeev","stage":"research_tavily_failed","query":"Identify key performance indicators (KPIs) for the sample run 2","message":"read ECONNRESET"}
+{"level":50,"time":1774443995823,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774443995825,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774443996174,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"research_failed","taskId":"c43f3245-3677-40ee-9712-65aad819eace","error":"Connection terminated unexpectedly"}
+{"level":50,"time":1774443996212,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"task_update_failed","taskId":"c43f3245-3677-40ee-9712-65aad819eace","error":"\nInvalid `prisma.researchTask.update()` invocation:\n\n\nCan't reach database server at ep-polished-mode-a1xtpk1j-pooler.ap-southeast-1.aws.neon.tech"}
+{"level":30,"time":1774443996212,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"research_completed","urlsFetched":20,"research_ms":923877}
+{"level":30,"time":1774443996212,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"scraping_completed","sources":20,"scrape_ms":11460}
+{"level":50,"time":1774443996223,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"job_failed","error":"\nInvalid `prisma.researchJob.update()` invocation:\n\n\nCan't reach database server at ep-polished-mode-a1xtpk1j-pooler.ap-southeast-1.aws.neon.tech"}
+{"level":50,"time":1774443996246,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"job_status_update_failed","error":"\nInvalid `prisma.researchJob.update()` invocation:\n\n\nCan't reach database server at ep-polished-mode-a1xtpk1j-pooler.ap-southeast-1.aws.neon.tech"}
+{"level":30,"time":1774443996247,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"total_job_time","total_job_ms":940799}
+{"level":50,"time":1774443996463,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443996506,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443996600,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443996696,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443997202,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443997204,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443997479,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443997514,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443997609,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443997703,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443998206,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443998206,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443998489,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443998521,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443998617,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443998711,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443999219,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443999219,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443999504,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443999526,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443999623,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774443999718,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774451553917,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774451553917,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774451553938,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774451553942,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774451553939,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774451553959,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774451556756,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"could not renew lock for job 17"}
+{"level":50,"time":1774451556821,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"Missing lock for job 17. moveToFinished"}
+{"level":50,"time":1774451557005,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"Missing lock for job 17. moveToFinished"}
+{"level":50,"time":1774451557369,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774451558383,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451559396,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451560406,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451561413,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451561735,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774451561756,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774451562214,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774451562424,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451562754,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451562770,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451563225,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451563430,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451563765,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451563779,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451564236,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451564535,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451564769,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451564786,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451565246,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451565784,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451565800,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451566261,"pid":8112,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451566971,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451566971,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774451572057,"pid":33248,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774451572058,"pid":8600,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":30,"time":1774451587007,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"worker_started"}
+{"level":30,"time":1774451588722,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"planner_started"}
+{"level":30,"time":1774451589147,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"planner_completed","taskCount":5,"planner_ms":424}
+{"level":30,"time":1774451589708,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"research_started"}
+{"level":30,"time":1774451590132,"pid":8112,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"scraping_started"}
+{"level":30,"time":1774451628902,"pid":28000,"hostname":"Rajeev","jobId":null,"stage":"worker_booted"}
+{"level":30,"time":1774451628908,"pid":9408,"hostname":"Rajeev","jobId":null,"stage":"worker_booted"}
+{"level":30,"time":1774451628955,"pid":24292,"hostname":"Rajeev","jobId":null,"stage":"worker_booted"}
+{"level":50,"time":1774451690295,"pid":9408,"hostname":"Rajeev","jobId":"58efee75-57c6-4aae-96a9-f4d82514639e","stage":"worker_event_failed","error":"job stalled more than allowable limit"}
+{"level":30,"time":1774451735337,"pid":31520,"hostname":"Rajeev","jobId":null,"stage":"worker_booted"}
+{"level":30,"time":1774451735444,"pid":21704,"hostname":"Rajeev","jobId":null,"stage":"worker_booted"}
+{"level":30,"time":1774451735442,"pid":32908,"hostname":"Rajeev","jobId":null,"stage":"worker_booted"}
+{"level":30,"time":1774451749776,"pid":28612,"hostname":"Rajeev","jobId":null,"stage":"worker_booted"}
+{"level":30,"time":1774451749796,"pid":6252,"hostname":"Rajeev","jobId":null,"stage":"worker_booted"}
+{"level":30,"time":1774451749829,"pid":31364,"hostname":"Rajeev","jobId":null,"stage":"worker_booted"}

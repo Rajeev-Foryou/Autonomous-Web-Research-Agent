@@ -2,8 +2,12 @@ import { Request, Response } from "express";
 import { prisma } from "../db/prisma";
 import { researchQueue } from "../queue/research.queue";
 
+const logger = console;
+
 export const createResearchJob = async (req: Request, res: Response) => {
-  let createdJobId: string | null = null;
+  const start = Date.now();
+  let dbMs = 0;
+  let queueMs = 0;
 
   try {
     const rawQuery = req.body?.query;
@@ -13,44 +17,43 @@ export const createResearchJob = async (req: Request, res: Response) => {
       return res.status(400).json({ error: "Query is required" });
     }
 
-    const result = await prisma.$transaction(async (tx) => {
-      const job = await tx.researchJob.create({
-        data: {
-          query,
-          status: "pending",
-        },
+    const dbStart = Date.now();
+    const jobPromise = prisma.researchJob.create({
+      data: { query, status: "pending" },
+      select: { id: true },
+    });
+
+    const queuePromise = jobPromise.then(async (job) => {
+      const queueStart = Date.now();
+
+      await researchQueue.add("research", {
+        jobId: job.id,
+        query,
       });
 
-      return {
-        job,
-      };
+      queueMs = Date.now() - queueStart;
+      return job;
     });
 
-    createdJobId = result.job.id;
+    const job = await jobPromise;
+    dbMs = Date.now() - dbStart;
 
-    await researchQueue.add("research-job", {
-      jobId: result.job.id,
+    await queuePromise;
+
+    const totalMs = Date.now() - start;
+
+    logger.info({
+      route: "/research",
+      dbMs,
+      queueMs,
+      totalMs,
     });
 
-    return res.status(201).json({
-      id: result.job.id,
-      status: result.job.status,
+    return res.status(202).json({
+      jobId: job.id,
+      status: "pending",
     });
   } catch (error) {
-    if (createdJobId) {
-      try {
-        await prisma.researchJob.update({
-          where: { id: createdJobId },
-          data: { status: "failed" },
-        });
-      } catch (updateError) {
-        console.error("Failed to update job status after enqueue error", {
-          createdJobId,
-          updateError,
-        });
-      }
-    }
-
     console.error("Failed to create research job", error);
     return res.status(500).json({ error: "Internal server error" });
   }

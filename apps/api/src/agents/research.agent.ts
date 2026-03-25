@@ -1,4 +1,5 @@
 import axios from "axios";
+import { logger } from "../lib/logger";
 
 export interface SearchResult {
   title: string;
@@ -26,7 +27,8 @@ export async function researchAgent(query: string): Promise<SearchResult[]> {
   const apiKey = process.env.TAVILY_API_KEY?.trim();
 
   if (!apiKey) {
-    console.error("[research-agent] missing TAVILY_API_KEY; returning empty results", {
+    logger.error({
+      stage: "research_missing_api_key",
       query: normalizedQuery,
     });
     return [];
@@ -66,7 +68,8 @@ export async function researchAgent(query: string): Promise<SearchResult[]> {
       .filter((item) => item.title.length > 0 || item.url.length > 0 || item.content.length > 0);
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      console.error("[research-agent] tavily request failed", {
+      logger.error({
+        stage: "research_tavily_failed",
         query: normalizedQuery,
         status: error.response?.status,
         statusText: error.response?.statusText,
@@ -74,7 +77,8 @@ export async function researchAgent(query: string): Promise<SearchResult[]> {
         message: error.message,
       });
     } else {
-      console.error("[research-agent] unexpected error while fetching search results", {
+      logger.error({
+        stage: "research_unexpected_error",
         query: normalizedQuery,
         error,
       });

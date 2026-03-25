@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
+import { logger } from "../lib/logger";
 
 const MAX_CONTENT_LENGTH = 5_000;
 
@@ -35,7 +36,8 @@ export async function scraperAgent(url: string): Promise<string> {
 
     return cleaned.slice(0, MAX_CONTENT_LENGTH);
   } catch (error) {
-    console.error("[scraper-agent] fast scraping failed", {
+    logger.error({
+      stage: "scraper_fast_failed",
       url,
       error,
     });

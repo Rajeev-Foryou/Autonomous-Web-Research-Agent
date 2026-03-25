@@ -1,5 +1,6 @@
 import { groqClient, groqTimeoutMs } from "../ai/groq.client";
 import { plannerPrompt } from "../ai/prompts/planner.prompt";
+import { logger } from "../lib/logger";
 
 export function fallbackTasks(query: string): string[] {
   const subject = query.trim() || "the topic";
@@ -77,7 +78,8 @@ export async function plannerAgent(query: string): Promise<string[]> {
     const rawText = typeof content === "string" ? content.trim() : "";
 
     if (!rawText) {
-      console.warn("[planner] empty response received; using fallback tasks", {
+      logger.info({
+        stage: "planner_empty_response",
         query: subject,
       });
       return fallbackTasks(subject);
@@ -91,13 +93,15 @@ export async function plannerAgent(query: string): Promise<string[]> {
         return tasks;
       }
 
-      console.warn("[planner] parsed task list was too small; using fallback tasks", {
+      logger.info({
+        stage: "planner_too_few_tasks",
         query: subject,
         parsedLength: tasks.length,
       });
       return fallbackTasks(subject);
     } catch (parseError) {
-      console.warn("[planner] invalid JSON from model; using fallback tasks", {
+      logger.info({
+        stage: "planner_invalid_json",
         query: subject,
         response: rawText,
         parseError,
@@ -105,7 +109,8 @@ export async function plannerAgent(query: string): Promise<string[]> {
       return fallbackTasks(subject);
     }
   } catch (error) {
-    console.error("[planner] planning request failed; using fallback tasks", {
+    logger.error({
+      stage: "planner_request_failed",
       query: subject,
       error,
     });
