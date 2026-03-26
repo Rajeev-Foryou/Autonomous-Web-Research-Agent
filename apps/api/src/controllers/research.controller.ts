@@ -1,12 +1,11 @@
 import { Request, Response } from "express";
-import { prisma } from "../db/prisma";
+import { v4 as uuid } from "uuid";
 import { researchQueue } from "../queue/research.queue";
 
 const logger = console;
 
 export const createResearchJob = async (req: Request, res: Response) => {
   const start = Date.now();
-  let dbMs = 0;
   let queueMs = 0;
 
   try {
@@ -17,40 +16,25 @@ export const createResearchJob = async (req: Request, res: Response) => {
       return res.status(400).json({ error: "Query is required" });
     }
 
-    const dbStart = Date.now();
-    const jobPromise = prisma.researchJob.create({
-      data: { query, status: "pending" },
-      select: { id: true },
+    const jobId = uuid();
+
+    const queueStart = Date.now();
+    await researchQueue.add("research", {
+      jobId,
+      query,
     });
-
-    const queuePromise = jobPromise.then(async (job) => {
-      const queueStart = Date.now();
-
-      await researchQueue.add("research", {
-        jobId: job.id,
-        query,
-      });
-
-      queueMs = Date.now() - queueStart;
-      return job;
-    });
-
-    const job = await jobPromise;
-    dbMs = Date.now() - dbStart;
-
-    await queuePromise;
+    queueMs = Date.now() - queueStart;
 
     const totalMs = Date.now() - start;
 
     logger.info({
       route: "/research",
-      dbMs,
       queueMs,
       totalMs,
     });
 
     return res.status(202).json({
-      jobId: job.id,
+      jobId,
       status: "pending",
     });
   } catch (error) {

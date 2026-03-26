@@ -41,7 +41,7 @@ export async function researchAgent(query: string): Promise<SearchResult[]> {
         api_key: apiKey,
         query: normalizedQuery,
         search_depth: "advanced",
-        max_results: 5,
+        max_results: 3,
       },
       {
         timeout: 20_000,
