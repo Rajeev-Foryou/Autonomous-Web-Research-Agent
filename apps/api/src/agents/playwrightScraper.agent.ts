@@ -3,7 +3,12 @@ import { logger } from "../lib/logger";
 
 const MAX_CONTENT_LENGTH = 5_000;
 
-export async function playwrightScraperAgent(url: string): Promise<string> {
+export async function playwrightScraperAgent(
+  url: string,
+  options?: {
+    timeoutMs?: number;
+  }
+): Promise<string> {
   let browser: Awaited<ReturnType<typeof chromium.launch>> | null = null;
 
   try {
@@ -13,12 +18,14 @@ export async function playwrightScraperAgent(url: string): Promise<string> {
       return "";
     }
 
+    const timeoutMs = options?.timeoutMs ?? 5_000;
+
     browser = await chromium.launch({ headless: true });
     const page = await browser.newPage();
 
     await page.goto(normalizedUrl, {
       waitUntil: "domcontentloaded",
-      timeout: 15_000,
+      timeout: timeoutMs,
     });
 
     await page.evaluate(() => {

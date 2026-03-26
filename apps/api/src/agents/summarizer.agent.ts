@@ -1,5 +1,5 @@
 import { groqClient, groqTimeoutMs } from "../ai/groq.client";
-import { summarizerPrompt } from "../ai/prompts/summarizer.prompt";
+import { summarizerFinalPrompt, summarizerSourcePrompt } from "../ai/prompts/summarizer.prompt";
 import { logger } from "../lib/logger";
 
 const summarizerFallback = [
@@ -16,7 +16,7 @@ const summarizerFallback = [
   "The report could not be generated at this time.",
 ].join("\n");
 
-export async function summarizerAgent(content: string): Promise<string> {
+export async function summarizerAgent(content: string, mode: "source" | "final" = "source"): Promise<string> {
   const normalizedContent = content.trim();
 
   if (!normalizedContent) {
@@ -24,13 +24,15 @@ export async function summarizerAgent(content: string): Promise<string> {
   }
 
   try {
+    const prompt = mode === "final" ? summarizerFinalPrompt : summarizerSourcePrompt;
+
     const response = await groqClient.chat.completions.create({
       model: "llama-3.1-8b-instant",
       temperature: 0.3,
       messages: [
         {
           role: "system",
-          content: summarizerPrompt,
+          content: prompt,
         },
         {
           role: "user",
