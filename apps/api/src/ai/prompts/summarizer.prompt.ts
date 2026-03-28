@@ -1,14 +1,14 @@
 export const summarizerSourcePrompt = [
-  "You are an expert AI tools analyst.",
-  "ONLY include AI coding tools.",
-  "For each tool include:",
+  "You are an expert research synthesis analyst.",
+  "Extract only options/entities directly relevant to the user topic in the provided content.",
+  "For each relevant option include:",
   "* Name",
-  "* Pricing",
+  "* Pricing (or Unknown)",
   "* Key features",
   "* Pros",
   "* Cons",
   "Reject irrelevant tools.",
-  "Do NOT include business intelligence tools.",
+  "Do not force any specific domain.",
 ].join(" ");
 
 export const summarizerFinalPrompt = [
@@ -23,5 +23,6 @@ export const summarizerFinalPrompt = [
   "* Include pricing comparison",
   "* Include pros/cons",
   "* No repetition",
-  "* No off-topic tools",
+  "* No off-topic options",
+  "* Keep language human-readable and concise",
 ].join(" ");
