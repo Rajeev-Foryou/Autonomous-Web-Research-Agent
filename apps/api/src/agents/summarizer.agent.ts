@@ -1,6 +1,10 @@
 import { groqClient, groqTimeoutMs } from "../ai/groq.client";
 import { summarizerFinalPrompt, summarizerSourcePrompt } from "../ai/prompts/summarizer.prompt";
 import { logger } from "../lib/logger";
+import { truncateToTokenLimit } from "../utils/token.util";
+
+const SOURCE_MODE_TOKEN_BUDGET = 1200;
+const FINAL_MODE_TOKEN_BUDGET = 1800;
 
 const summarizerFallback = [
   "Title:",
@@ -17,7 +21,8 @@ const summarizerFallback = [
 ].join("\n");
 
 export async function summarizerAgent(content: string, mode: "source" | "final" = "source"): Promise<string> {
-  const normalizedContent = content.trim();
+  const modeTokenBudget = mode === "final" ? FINAL_MODE_TOKEN_BUDGET : SOURCE_MODE_TOKEN_BUDGET;
+  const normalizedContent = truncateToTokenLimit(content.trim(), modeTokenBudget);
 
   if (!normalizedContent) {
     return summarizerFallback;

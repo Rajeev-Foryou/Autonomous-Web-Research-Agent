@@ -23,6 +23,7 @@ function parseRedisUrl(redisUrl: string): ConnectionOptions {
     db,
     tls: parsed.protocol === "rediss:" ? {} : undefined,
     maxRetriesPerRequest: null,
+    retryStrategy: (times: number) => Math.min(times * 100, 3000),
   };
 }
 

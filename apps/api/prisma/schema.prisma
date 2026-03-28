@@ -7,11 +7,18 @@ datasource db {
 }
 
 model ResearchJob {
-  id        String   @id @default(uuid())
-  query     String
-  status    String   @default("pending")
-  currentStage String @default("pending")
-  createdAt DateTime @default(now())
+  id             String   @id @default(uuid())
+  query          String
+  status         String   @default("pending")
+  currentStage   String?  @default("planning")
+  idempotencyKey String?  @unique
+  plannerMs      Int?
+  researchMs     Int?
+  scrapeMs       Int?
+  summarizeMs    Int?
+  errorMessage   String?
+  createdAt      DateTime @default(now())
+  completedAt    DateTime?
 
   sources   ResearchSource[]
   report    ResearchReport?

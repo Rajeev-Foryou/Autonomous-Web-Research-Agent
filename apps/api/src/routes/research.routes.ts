@@ -1,8 +1,10 @@
 import { Router } from "express";
-import { createResearchJob } from "../controllers/research.controller";
+import { createResearchJob, getResearchById, getStatusById } from "../controllers/research.controller";
 
 const router = Router();
 
-router.post("/", createResearchJob);
+router.post("/research", createResearchJob);
+router.get("/research/:id", getResearchById);
+router.get("/research/:id/status", getStatusById);
 
 export default router;

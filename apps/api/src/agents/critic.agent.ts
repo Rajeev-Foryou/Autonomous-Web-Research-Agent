@@ -1,6 +1,9 @@
 import { groqClient, groqTimeoutMs } from "../ai/groq.client";
 import { criticPrompt } from "../ai/prompts/critic.prompt";
 import { logger } from "../lib/logger";
+import { truncateToTokenLimit } from "../utils/token.util";
+
+const CRITIC_TOKEN_BUDGET = 1000;
 
 type CriticResult = {
   score: number;
@@ -86,7 +89,7 @@ export async function criticAgent(report: string): Promise<{
   issues: string[];
   improvedReport: string | null;
 }> {
-  const normalizedReport = report.trim();
+  const normalizedReport = truncateToTokenLimit(report.trim(), CRITIC_TOKEN_BUDGET);
 
   if (!normalizedReport) {
     return criticFallback;

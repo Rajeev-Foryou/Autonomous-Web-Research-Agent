@@ -1,0 +1,42 @@
+import { exec } from "child_process";
+import path from "path";
+import { prisma } from "../lib/prisma";
+
+let readyPromise: Promise<typeof prisma> | null = null;
+
+function runPrismaMigrateDeploy(): Promise<void> {
+  const schemaPath = path.resolve(__dirname, "../../prisma/schema.prisma");
+  const command = `npx prisma migrate deploy --schema "${schemaPath}"`;
+
+  return new Promise((resolve, reject) => {
+    exec(command, {
+      cwd: path.resolve(__dirname, "../.."),
+      env: process.env,
+    }, (error, _stdout, stderr) => {
+      if (!error) {
+        resolve();
+        return;
+      }
+
+      reject(new Error("prisma migrate deploy failed" + (stderr ? ": " + stderr.trim() : "")));
+    });
+  });
+}
+
+export async function ensureDatabaseReady(): Promise<typeof prisma> {
+  if (!readyPromise) {
+    readyPromise = (async () => {
+      await runPrismaMigrateDeploy();
+      await prisma.$connect();
+      await prisma.$queryRaw`SELECT 1`;
+      return prisma;
+    })().catch((error) => {
+      readyPromise = null;
+      throw error;
+    });
+  }
+
+  return readyPromise;
+}
+
+export { prisma };
