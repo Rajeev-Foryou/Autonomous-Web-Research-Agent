@@ -7,6 +7,8 @@
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "worker": "ts-node-dev --respawn --transpile-only src/workers/research.worker.ts",
     "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "start:worker": "node dist/workers/research.worker.js",
     "prisma:generate": "prisma generate --schema prisma/schema.prisma",
     "postinstall": "npm run prisma:generate"
   },

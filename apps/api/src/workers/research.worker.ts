@@ -1,6 +1,6 @@
 import { Worker } from "bullmq";
 import pLimit from "p-limit";
-import "../config/env";
+import { env } from "../config/env";
 import { prisma } from "../lib/prisma";
 import { redisConnection } from "../queue/redis.connection";
 import { fallbackTasks, plannerAgent } from "../agents/planner.agent";
@@ -921,21 +921,18 @@ const worker = new Worker<{ jobId: string; query: string }>(
       });
 
       logger.info({ jobId, stage: "report_persist_done" });
-
-      await updateJobStage(jobId, "completed", "completed");
-
-      const completionMetrics: Record<string, unknown> = {
-        plannerMs,
-        researchMs,
-        scrapeMs,
-        summarizeMs,
-        completedAt: new Date(),
-        errorMessage: null,
-      };
-
       await prisma.researchJob.update({
         where: { id: jobId },
-        data: completionMetrics as never,
+        data: {
+          status: "completed",
+          currentStage: "completed",
+          plannerMs,
+          researchMs,
+          scrapeMs,
+          summarizeMs,
+          completedAt: new Date(),
+          errorMessage: null,
+        },
       });
 
       logger.info({ jobId, stage: "job_completed" });
@@ -949,19 +946,18 @@ const worker = new Worker<{ jobId: string; query: string }>(
       });
 
       try {
-        const failureMetrics: Record<string, unknown> = {
-          status: "failed",
-          currentStage: "failed",
-          plannerMs,
-          researchMs,
-          scrapeMs,
-          summarizeMs,
-          errorMessage,
-        };
-
         await prisma.researchJob.update({
           where: { id: jobId },
-          data: failureMetrics as never,
+          data: {
+            status: "failed",
+            currentStage: "failed",
+            plannerMs,
+            researchMs,
+            scrapeMs,
+            summarizeMs,
+            completedAt: new Date(),
+            errorMessage,
+          },
         });
       } catch (updateError) {
         logger.error({
@@ -1023,7 +1019,9 @@ worker.on("error", (error) => {
 
 async function startWorker(): Promise<void> {
   try {
-    await ensureDatabaseReady();
+    await ensureDatabaseReady({
+      runMigrations: env.runMigrationsOnBoot,
+    });
     void worker.run();
 
     logger.info({

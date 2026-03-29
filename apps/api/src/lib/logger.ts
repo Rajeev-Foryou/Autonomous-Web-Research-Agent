@@ -1,13 +1,20 @@
 import fs from "fs";
+import path from "path";
 import pino from "pino";
 
-if (!fs.existsSync("./logs")) {
+const isProduction = process.env.NODE_ENV === "production";
+
+if (!isProduction && !fs.existsSync("./logs")) {
   fs.mkdirSync("./logs", { recursive: true });
 }
 
+const destination = isProduction
+  ? pino.destination(1)
+  : pino.destination(path.resolve(process.cwd(), "logs/worker.log"));
+
 export const logger = pino(
   {
-    level: "info",
+    level: process.env.LOG_LEVEL || "info",
   },
-  pino.destination("./logs/worker.log")
+  destination
 );

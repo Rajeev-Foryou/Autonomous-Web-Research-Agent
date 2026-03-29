@@ -3201,3 +3201,294 @@
 {"level":30,"time":1774704740534,"pid":33704,"hostname":"Rajeev","route":"GET /research/:id","jobId":"df7bec4b-d62d-4b35-8932-01d18066b053","stage":"request_received"}
 {"level":30,"time":1774704740563,"pid":33704,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"df7bec4b-d62d-4b35-8932-01d18066b053","totalMs":119}
 {"level":30,"time":1774704741747,"pid":33704,"hostname":"Rajeev","route":"GET /research/:id","jobId":"df7bec4b-d62d-4b35-8932-01d18066b053","totalMs":1213}
+{"level":30,"time":1774706524229,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_booted"}
+{"level":50,"time":1774707897469,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774707897560,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774707898213,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774707898238,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774707898595,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774707898596,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774707899008,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774707899034,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774707899464,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774707899466,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774707899985,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774707899988,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774707900595,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774707900596,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774707901315,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774707901317,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774708362423,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774708362445,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774708363345,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774708363360,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774708364362,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774708364365,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774708365470,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774708365471,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774708366687,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774708366688,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774717643715,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774717643716,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774717652316,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774717652429,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774719243605,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774719243608,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774719243732,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719243739,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719243946,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719243947,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719244253,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719244254,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719244665,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719244666,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719245175,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719245176,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719245778,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719245778,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719246491,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719246491,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719247299,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719247300,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719248203,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774719248204,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774730032727,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774730032728,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774765528012,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774765528013,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774765528865,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774765528865,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774765529149,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774765529149,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774765529496,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774765529516,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774765530055,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774765530089,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774765531102,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774765531156,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774765574917,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774765581530,"pid":13520,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":30,"time":1774766505139,"pid":28076,"hostname":"Rajeev","jobId":null,"stage":"worker_booted"}
+{"level":30,"time":1774766917351,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_booted"}
+{"level":50,"time":1774768804505,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774768804511,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"read ECONNRESET"}
+{"level":50,"time":1774768804683,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768804685,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768804895,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768804896,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768805213,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768805214,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768805632,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768805633,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768806163,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768806169,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768806772,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768806776,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768807480,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768807480,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768808283,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768808284,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768809188,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774768809189,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774769100192,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774769100193,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":"getaddrinfo ENOTFOUND fine-garfish-78408.upstash.io"}
+{"level":50,"time":1774769102344,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774769102345,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774769103566,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774769103567,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774769104881,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774769104882,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774769106295,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774769106296,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774769107815,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774769107816,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774769109423,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774769109423,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774769111142,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774769111142,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774769113060,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":50,"time":1774769113060,"pid":18324,"hostname":"Rajeev","jobId":null,"stage":"worker_error","error":""}
+{"level":30,"time":1774772670421,"pid":38044,"hostname":"Rajeev","jobId":null,"stage":"worker_booted"}
+{"level":30,"time":1774772722059,"pid":25572,"hostname":"Rajeev","route":"POST /research","jobId":null,"stage":"request_received"}
+{"level":30,"time":1774772726222,"pid":25572,"hostname":"Rajeev","route":"POST /research","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","deduplicated":false,"totalMs":4163}
+{"level":30,"time":1774772727066,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"worker_started"}
+{"level":30,"time":1774772727705,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772728050,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":345}
+{"level":30,"time":1774772728053,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772728365,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":312}
+{"level":30,"time":1774772729697,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772729995,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":298}
+{"level":30,"time":1774772732129,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772732420,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":291}
+{"level":30,"time":1774772733522,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"planner_started"}
+{"level":30,"time":1774772733701,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772733984,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":283}
+{"level":30,"time":1774772734780,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"planner_completed","taskCount":6,"planner_ms":1258}
+{"level":30,"time":1774772735699,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772736026,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":327}
+{"level":30,"time":1774772736720,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"research_started"}
+{"level":30,"time":1774772737631,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scraping_started"}
+{"level":30,"time":1774772737702,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772737993,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":291}
+{"level":30,"time":1774772739698,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772740002,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":304}
+{"level":30,"time":1774772741701,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772742272,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":571}
+{"level":30,"time":1774772743697,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772743994,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":297}
+{"level":30,"time":1774772745488,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"0f644524-838e-4baf-adbd-692d218dd0bc","url":"https://review.firstround.com/how-does-your-leadership-team-rate/","method":"fast","contentLength":5000}
+{"level":30,"time":1774772745700,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772745854,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"0f644524-838e-4baf-adbd-692d218dd0bc","url":"https://thayerleadership.com/leadership-blog/ceo-role-in-shaping-culture/","method":"fast","contentLength":5000}
+{"level":30,"time":1774772746470,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":770}
+{"level":30,"time":1774772747019,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"0f644524-838e-4baf-adbd-692d218dd0bc","url":"https://www.library.hbs.edu/working-knowledge/what-makes-leadership-team-effective-start-with-these-eight-steps","method":"fast","contentLength":5000}
+{"level":30,"time":1774772747696,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772747986,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":290}
+{"level":30,"time":1774772749699,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772749985,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":287}
+{"level":30,"time":1774772751701,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772751992,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":291}
+{"level":30,"time":1774772753698,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772754002,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":304}
+{"level":30,"time":1774772755700,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772755992,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":292}
+{"level":30,"time":1774772756912,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"3548ec85-5b3e-4093-bd28-08c0fb9a6703","url":"https://www.businessinsider.com/meet-rising-stars-in-esports-casting-commentary-analysis-2021-11","method":"fast","contentLength":5000}
+{"level":30,"time":1774772757697,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772757992,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":295}
+{"level":30,"time":1774772758006,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"3548ec85-5b3e-4093-bd28-08c0fb9a6703","url":"https://ultimateesports.co.uk/best-commentators-in-esports-broadcasting/","method":"fast","contentLength":5000}
+{"level":30,"time":1774772759700,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772760470,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":770}
+{"level":30,"time":1774772760745,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"3548ec85-5b3e-4093-bd28-08c0fb9a6703","url":"https://guof.people.clemson.edu/papers/commentator.pdf","method":"fast","contentLength":5000}
+{"level":30,"time":1774772761696,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772762267,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":571}
+{"level":30,"time":1774772763700,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772763988,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":289}
+{"level":30,"time":1774772765702,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772765989,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":287}
+{"level":30,"time":1774772768123,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772768408,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":285}
+{"level":30,"time":1774772769705,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772769820,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":115}
+{"level":30,"time":1774772771697,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772771815,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":118}
+{"level":30,"time":1774772771950,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"65f5ded1-ef18-46d8-99bc-9a0d28dee26c","url":"https://blogs.ampp.org/lead-and-succeed/sponsorships-as-strategy","method":"fast","contentLength":5000}
+{"level":30,"time":1774772772737,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"65f5ded1-ef18-46d8-99bc-9a0d28dee26c","url":"https://www.altexsoft.com/blog/revenue-streams/","method":"fast","contentLength":5000}
+{"level":30,"time":1774772773701,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772773720,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"65f5ded1-ef18-46d8-99bc-9a0d28dee26c","url":"https://www.matchinggifts.com/nonprofit-revenue-diversification/","method":"fast","contentLength":5000}
+{"level":30,"time":1774772773817,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":116}
+{"level":30,"time":1774772775697,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772775813,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":116}
+{"level":30,"time":1774772777128,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"a4d7b8cd-eb11-4495-a4bb-1e28cf56a96d","url":"https://nerdstreet.com/news/2023/12/top-10-esports-orgs-in-the-world-2023","method":"fast","contentLength":5000}
+{"level":30,"time":1774772777190,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"a4d7b8cd-eb11-4495-a4bb-1e28cf56a96d","url":"https://abiosgaming.com/press/esports-roster-team-contract/","method":"fast","contentLength":4611}
+{"level":30,"time":1774772777698,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772777818,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":120}
+{"level":30,"time":1774772778572,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"a4d7b8cd-eb11-4495-a4bb-1e28cf56a96d","url":"https://www.espn.com/nfl/story/_/id/45711952/2025-nfl-roster-ranking-starting-lineups-projection-32-teams","method":"fast","contentLength":5000}
+{"level":30,"time":1774772779697,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772779813,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":116}
+{"level":30,"time":1774772781697,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772781899,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"e2f3dc18-e20f-4c09-97f5-c0141d2eef75","url":"https://www.captrust.com/resources/mission-or-values-which-comes-first/","method":"fast","contentLength":5000}
+{"level":30,"time":1774772781912,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":215}
+{"level":30,"time":1774772781922,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"e2f3dc18-e20f-4c09-97f5-c0141d2eef75","url":"https://parthenonmgmt.com/a-guide-to-organizational-values-mission-vision/","method":"fast","contentLength":5000}
+{"level":30,"time":1774772782855,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"e2f3dc18-e20f-4c09-97f5-c0141d2eef75","url":"https://www.aespire.com/blog/what-is-the-difference-between-mission-vision-and-values-statements","method":"fast","contentLength":5000}
+{"level":30,"time":1774772783702,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772783818,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":116}
+{"level":30,"time":1774772785696,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772785817,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":121}
+{"level":30,"time":1774772787701,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772787837,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":136}
+{"level":30,"time":1774772787907,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"fb9ae790-8f4c-4b57-a9c9-9e86ea396e18","url":"https://www.businessinsider.com/esports-database-top-teams-prize-money-titles-2021-10","method":"fast","contentLength":3923}
+{"level":30,"time":1774772788255,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"fb9ae790-8f4c-4b57-a9c9-9e86ea396e18","url":"https://www.esportsearnings.com/teams","method":"fast","contentLength":5000}
+{"level":30,"time":1774772788291,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scrape_result","taskId":"fb9ae790-8f4c-4b57-a9c9-9e86ea396e18","url":"https://www.esportsearnings.com/tournaments","method":"fast","contentLength":5000}
+{"level":30,"time":1774772788832,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"research_completed","urlsFetched":18,"research_ms":21052}
+{"level":30,"time":1774772788832,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"scraping_completed","sources":18,"scrape_ms":18465}
+{"level":30,"time":1774772788950,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"summarization_started"}
+{"level":30,"time":1774772789336,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"summarizer_started","sources_used":5}
+{"level":30,"time":1774772789697,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772789821,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":124}
+{"level":30,"time":1774772790441,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"summarizer_completed","insights":3}
+{"level":30,"time":1774772790441,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"report_persist_start"}
+{"level":30,"time":1774772790729,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"report_persist_done"}
+{"level":30,"time":1774772790852,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"job_completed"}
+{"level":30,"time":1774772790852,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"timing","planner_ms":1258,"research_ms":21052,"scrape_ms":18465,"summarize_ms":1491,"total_job_ms":63786}
+{"level":30,"time":1774772790852,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"total_job_time","total_job_ms":63786}
+{"level":30,"time":1774772790971,"pid":18324,"hostname":"Rajeev","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"worker_event_completed"}
+{"level":30,"time":1774772791151,"pid":25572,"hostname":"Rajeev","stage":"queue_event_completed","jobId":"44"}
+{"level":30,"time":1774772791700,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772791824,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":124}
+{"level":30,"time":1774772793285,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772794445,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":1160}
+{"level":30,"time":1774772794447,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","stage":"request_received"}
+{"level":30,"time":1774772795669,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id","jobId":"e8098288-68ea-465d-8ba2-951640ea7aaf","totalMs":1222}
+{"level":30,"time":1774772854978,"pid":25572,"hostname":"Rajeev","route":"POST /research","jobId":null,"stage":"request_received"}
+{"level":30,"time":1774772856089,"pid":25572,"hostname":"Rajeev","route":"POST /research","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","deduplicated":false,"totalMs":1111}
+{"level":30,"time":1774772856197,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772856202,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"worker_started"}
+{"level":30,"time":1774772856309,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":112}
+{"level":30,"time":1774772856310,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772856436,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":126}
+{"level":30,"time":1774772857577,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"planner_started"}
+{"level":30,"time":1774772858028,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"planner_completed","taskCount":6,"planner_ms":451}
+{"level":30,"time":1774772858189,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772858301,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":112}
+{"level":30,"time":1774772858695,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"research_started"}
+{"level":30,"time":1774772859036,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"scraping_started"}
+{"level":30,"time":1774772860186,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772860298,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":112}
+{"level":30,"time":1774772862189,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772862303,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":114}
+{"level":30,"time":1774772864090,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"scrape_result","taskId":"504babc8-fd2e-4190-9187-a7e71c8cb706","url":"https://en.wikipedia.org/wiki/List_of_India_Twenty20_International_cricket_records","method":"fast","contentLength":5000}
+{"level":30,"time":1774772864186,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772864297,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":111}
+{"level":30,"time":1774772864938,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"scrape_result","taskId":"504babc8-fd2e-4190-9187-a7e71c8cb706","url":"https://www.reddit.com/r/IndiaCricket/comments/1oh5e3g/top_5_indian_batsmen_with_the_most_runs_in_t20/","method":"fast","contentLength":816}
+{"level":30,"time":1774772865019,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"scrape_result","taskId":"504babc8-fd2e-4190-9187-a7e71c8cb706","url":"https://www.howstat.com/Cricket/Statistics/Batting/BattingCareerRuns_T20.asp","method":"fast","contentLength":5000}
+{"level":30,"time":1774772866192,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772866304,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":112}
+{"level":30,"time":1774772868186,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772868297,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":111}
+{"level":30,"time":1774772868348,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"scrape_result","taskId":"53539515-2d3c-4ecc-b05e-f3ed5f35eed0","url":"https://en.wikipedia.org/wiki/List_of_cricketers_by_number_of_international_centuries_scored","method":"fast","contentLength":5000}
+{"level":30,"time":1774772868451,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"scrape_result","taskId":"53539515-2d3c-4ecc-b05e-f3ed5f35eed0","url":"https://www.jagranjosh.com/general-knowledge/indian-players-with-the-most-t20i-centuries-check-complete-list-here-1731702291-1","method":"fast","contentLength":5000}
+{"level":30,"time":1774772870187,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772870393,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":206}
+{"level":30,"time":1774772871356,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"scrape_result","taskId":"7bd9e36b-2552-4f27-8f35-f1a5ea92d2b3","url":"https://www.wionews.com/photos/5-indian-batters-with-highest-strike-rates-in-t20is-abhishek-sharma-yashasvi-jaiswal-suryakumar-yadav-rinku-singh-sanju-samson-1768991002936","method":"fast","contentLength":2294}
+{"level":30,"time":1774772872190,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772872236,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"scrape_result","taskId":"7bd9e36b-2552-4f27-8f35-f1a5ea92d2b3","url":"https://www.india.com/photos/sports/top-indian-players-with-highest-strike-rate-in-t20is-423174/","method":"fast","contentLength":5000}
+{"level":30,"time":1774772872302,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":112}
+{"level":30,"time":1774772872921,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"scrape_result","taskId":"7bd9e36b-2552-4f27-8f35-f1a5ea92d2b3","url":"https://www.reddit.com/r/IndiaCricket/comments/1redyc6/a_look_at_team_indias_batting_strike_rate_before/","method":"fast","contentLength":848}
+{"level":30,"time":1774772874187,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772874299,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":112}
+{"level":50,"time":1774772875757,"pid":18324,"hostname":"Rajeev","stage":"scraper_fast_failed","url":"https://www.bcci.tv/international/men/stats/test","error":{"message":"Request failed with status code 403","name":"AxiosError","stack":"AxiosError: Request failed with status code 403\n    at settle (D:\\Autonomous_Web_Research_Agent\\node_modules\\axios\\lib\\core\\settle.js:20:7)\n    at IncomingMessage.handleStreamEnd (D:\\Autonomous_Web_Research_Agent\\node_modules\\axios\\lib\\adapters\\http.js:844:13)\n    at IncomingMessage.emit (node:events:520:35)\n    at endReadableNT (node:internal/streams/readable:1701:12)\n    at processTicksAndRejections (node:internal/process/task_queues:90:21)\n    at Axios.request (D:\\Autonomous_Web_Research_Agent\\node_modules\\axios\\lib\\core\\Axios.js:46:41)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at scraperAgent (D:\\Autonomous_Web_Research_Agent\\apps\\api\\src\\agents\\scraper.agent.ts:15:22)\n    at smartScraperAgent (D:\\Autonomous_Web_Research_Agent\\apps\\api\\src\\agents\\smartScraper.agent.ts:48:23)\n    at D:\\Autonomous_Web_Research_Agent\\apps\\api\\src\\workers\\research.worker.ts:753:35","config":{"transitional":{"silentJSONParsing":true,"forcedJSONParsing":true,"clarifyTimeoutError":false,"legacyInterceptorReqResOrdering":true},"adapter":["xhr","http","fetch"],"transformRequest":[null],"transformResponse":[null],"timeout":15000,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":5242880,"maxBodyLength":-1,"env":{},"headers":{"Accept":"application/json, text/plain, */*","User-Agent":"Autonomous-Web-Research-Agent/1.0","Accept-Encoding":"gzip, compress, deflate, br"},"responseType":"text","method":"get","url":"https://www.bcci.tv/international/men/stats/test","allowAbsoluteUrls":true},"code":"ERR_BAD_REQUEST","status":403}}
+{"level":30,"time":1774772875757,"pid":18324,"hostname":"Rajeev","stage":"smart_scraper_fallback_playwright","url":"https://www.bcci.tv/international/men/stats/test"}
+{"level":50,"time":1774772875774,"pid":18324,"hostname":"Rajeev","stage":"scraper_playwright_failed","url":"https://www.bcci.tv/international/men/stats/test","error":{"name":"Error"}}
+{"level":30,"time":1774772875774,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"scrape_result","taskId":"829a6f14-7181-4dfc-b372-1dbbaa76667c","url":"https://www.bcci.tv/international/men/stats/test","method":"fast","contentLength":2393}
+{"level":30,"time":1774772876058,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"scrape_result","taskId":"829a6f14-7181-4dfc-b372-1dbbaa76667c","url":"https://www.cricbites.com/highest-batting-average-in-t20i-cricket-history/","method":"fast","contentLength":5000}
+{"level":30,"time":1774772876189,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772876301,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":112}
+{"level":30,"time":1774772878186,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772878297,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":111}
+{"level":30,"time":1774772878915,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"scrape_result","taskId":"9a66715a-d92c-450c-b386-fdc8485971b8","url":"https://www.wionews.com/photos/from-sanju-samson-to-virat-kohli-meet-5-indians-with-highest-score-in-t20-world-cups-suresh-raina-rohit-sharma-suryakumar-yadav-1772389179517","method":"fast","contentLength":2924}
+{"level":30,"time":1774772879335,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"scrape_result","taskId":"9a66715a-d92c-450c-b386-fdc8485971b8","url":"https://www.hindustantimes.com/cricket/teams/india-4/t20/records-3-0","method":"fast","contentLength":5000}
+{"level":30,"time":1774772880188,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772880300,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":112}
+{"level":30,"time":1774772882111,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"scrape_result","taskId":"9d8e04db-1acf-476f-9ff4-d3fe191c5382","url":"https://www.wionews.com/photos/meet-5-batters-with-most-fifties-in-t20is-babar-azam-virat-kohli-rohit-sharma-mohammad-rizwan-david-warner-1770041054537","method":"fast","contentLength":2329}
+{"level":30,"time":1774772882192,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772882308,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":116}
+{"level":30,"time":1774772883282,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"scrape_result","taskId":"9d8e04db-1acf-476f-9ff4-d3fe191c5382","url":"https://www.wisden.com/records/men-t20i/batting-records/most-fifties-in-t20i","method":"fast","contentLength":1416}
+{"level":30,"time":1774772883806,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"research_completed","urlsFetched":18,"research_ms":13399}
+{"level":30,"time":1774772883807,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"scraping_completed","sources":14,"scrape_ms":7262}
+{"level":30,"time":1774772883921,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"summarization_started"}
+{"level":30,"time":1774772884187,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772884202,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"summarizer_started","sources_used":5}
+{"level":30,"time":1774772884299,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":112}
+{"level":30,"time":1774772885699,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"summarizer_completed","insights":5}
+{"level":30,"time":1774772885699,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"report_persist_start"}
+{"level":30,"time":1774772885938,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"report_persist_done"}
+{"level":30,"time":1774772886052,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"job_completed"}
+{"level":30,"time":1774772886052,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"timing","planner_ms":451,"research_ms":13399,"scrape_ms":7262,"summarize_ms":1777,"total_job_ms":29850}
+{"level":30,"time":1774772886052,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"total_job_time","total_job_ms":29850}
+{"level":30,"time":1774772886165,"pid":18324,"hostname":"Rajeev","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"worker_event_completed"}
+{"level":30,"time":1774772886192,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772886304,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id/status","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":112}
+{"level":30,"time":1774772886401,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772887008,"pid":25572,"hostname":"Rajeev","stage":"queue_event_completed","jobId":"45"}
+{"level":30,"time":1774772887633,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":1232}
+{"level":30,"time":1774772887636,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
+{"level":30,"time":1774772888099,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":463}

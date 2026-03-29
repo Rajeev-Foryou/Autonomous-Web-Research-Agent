@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { getResult, type ResearchResult } from "@/lib/api";
+import MetricsCard from "@/components/MetricsCard";
 
 type ParsedComparison = {
   intro: string[];
@@ -177,6 +178,7 @@ export default function ResearchPage() {
 
       {/* Content */}
       <div className="mx-auto max-w-4xl px-6 mt-16 space-y-16">
+        <MetricsCard />
         
         {/* Key Insights */}
         <section className="space-y-6">
