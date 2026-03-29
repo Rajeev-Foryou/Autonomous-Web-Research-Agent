@@ -23,10 +23,19 @@ function runPrismaMigrateDeploy(): Promise<void> {
   });
 }
 
-export async function ensureDatabaseReady(): Promise<typeof prisma> {
+type EnsureDatabaseReadyOptions = {
+  runMigrations?: boolean;
+};
+
+export async function ensureDatabaseReady(options: EnsureDatabaseReadyOptions = {}): Promise<typeof prisma> {
+  const shouldRunMigrations = options.runMigrations ?? true;
+
   if (!readyPromise) {
     readyPromise = (async () => {
-      await runPrismaMigrateDeploy();
+      if (shouldRunMigrations) {
+        await runPrismaMigrateDeploy();
+      }
+
       await prisma.$connect();
       await prisma.$queryRaw`SELECT 1`;
       return prisma;

@@ -8,18 +8,42 @@ import { logger } from "./lib/logger";
 
 const app = express();
 
-app.use(cors());
+app.set("trust proxy", 1);
+
+const corsOrigins = new Set(env.corsAllowedOrigins);
+
+app.use(cors({
+  origin(origin, callback) {
+    if (!origin) {
+      callback(null, true);
+      return;
+    }
+
+    if (corsOrigins.size === 0 || corsOrigins.has(origin)) {
+      callback(null, true);
+      return;
+    }
+
+    callback(new Error("Not allowed by CORS"));
+  },
+}));
 app.use(express.json());
 app.use("/", healthRouter);
 app.use("/", researchRoutes);
 
 async function startApiServer(): Promise<void> {
   try {
-    await ensureDatabaseReady();
+    await ensureDatabaseReady({
+      runMigrations: env.runMigrationsOnBoot,
+    });
 
     const server = app.listen(env.port, () => {
       // Keep startup logs structured for container and cloud runtimes.
-      console.log("API listening on port " + env.port + " (" + env.nodeEnv + ")");
+      logger.info({
+        stage: "api_booted",
+        port: env.port,
+        nodeEnv: env.nodeEnv,
+      });
     });
 
     const shutdown = async () => {
@@ -38,7 +62,10 @@ async function startApiServer(): Promise<void> {
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-    console.error("api_bootstrap_failed: " + message);
+    logger.error({
+      stage: "api_bootstrap_failed",
+      error: message,
+    });
     process.exit(1);
   }
 }

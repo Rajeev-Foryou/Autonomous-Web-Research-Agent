@@ -1,4 +1,10 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
+const configuredApiUrl = process.env.NEXT_PUBLIC_API_URL?.trim();
+
+if (process.env.NODE_ENV === "production" && !configuredApiUrl) {
+  throw new Error("NEXT_PUBLIC_API_URL is required in production");
+}
+
+const API_BASE_URL = (configuredApiUrl || "http://localhost:4000").replace(/\/+$/, "");
 
 type ApiError = {
   error?: string;
@@ -27,6 +33,14 @@ export interface ResearchResult {
     conclusion: string;
   };
   sources: { title: string; url: string }[];
+}
+
+export interface MetricsResponse {
+  totalJobs: number;
+  completedJobs: number;
+  failedJobs: number;
+  successRate: number;
+  avgCompletionTimeMs: number;
 }
 
 async function parseApiError(response: Response, fallback: string): Promise<never> {
@@ -65,6 +79,16 @@ export async function getResult(jobId: string): Promise<ResearchResult> {
 
   if (!response.ok) {
     return parseApiError(response, `Failed to fetch results for job ${jobId}`);
+  }
+
+  return response.json();
+}
+
+export async function getMetrics(): Promise<MetricsResponse> {
+  const response = await fetch(`${API_BASE_URL}/metrics`);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch metrics");
   }
 
   return response.json();

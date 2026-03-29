@@ -10,6 +10,8 @@
     "dev": "npm run dev:api",
     "dev:api": "npm run dev -w @autonomous/api",
     "dev:web": "npm run dev -w @autonomous/web",
-    "build:types": "npm run build -w @autonomous/types"
+    "build:types": "npm run build -w @autonomous/types",
+    "build:api": "npm run build:types && npm run build -w @autonomous/api",
+    "build:web": "npm run build -w @autonomous/web"
   }
 }
