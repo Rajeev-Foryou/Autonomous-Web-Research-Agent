@@ -92,7 +92,7 @@ Stage values exposed to frontend:
 
 ## API Surface
 
-Base URL: backend service URL (example: https://your-api.onrender.com)
+Base URL: https://autonomous-web-research-agent-2.onrender.com
 
 ### Health
 
@@ -164,7 +164,7 @@ Required in production:
 - REDIS_URL=rediss://...
 - GROQ_API_KEY=...
 - TAVILY_API_KEY=...
-- CORS_ALLOWED_ORIGINS=https://your-frontend-domain
+- CORS_ALLOWED_ORIGINS=https://autonomous-web-research-agent-web.vercel.app/
 
 Recommended:
 
@@ -182,7 +182,7 @@ Notes:
 
 Required in production:
 
-- NEXT_PUBLIC_API_URL=https://your-api-domain
+- NEXT_PUBLIC_API_URL=https://autonomous-web-research-agent-2.onrender.com
 
 ## Local Development
 
