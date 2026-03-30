@@ -37,7 +37,7 @@ export async function ensureDatabaseReady(options: EnsureDatabaseReadyOptions = 
       }
 
       await prisma.$connect();
-      await prisma.$queryRaw`SELECT 1`;
+      await prisma.$executeRawUnsafe("SELECT 1");
       return prisma;
     })().catch((error) => {
       readyPromise = null;
