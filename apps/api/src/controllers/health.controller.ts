@@ -7,7 +7,7 @@ export const getHealth = async (_req: Request, res: Response): Promise<void> => 
   let redis: Redis | null = null;
 
   try {
-    await prisma.$queryRaw`SELECT 1`;
+    await prisma.$executeRawUnsafe("SELECT 1");
 
     redis = new Redis(env.redisUrl, {
       maxRetriesPerRequest: 3,
