@@ -34,6 +34,9 @@ Recommended:
 
 - `RUN_MIGRATIONS_ON_BOOT=true` on API service
 - `RUN_MIGRATIONS_ON_BOOT=false` on worker service
+- `RATE_LIMIT_ENABLED=true`
+- `RATE_LIMIT_WINDOW_MS=60000`
+- `RATE_LIMIT_MAX_REQUESTS=60`
 - `GROQ_TIMEOUT_MS=15000`
 - `LOG_LEVEL=info`
 

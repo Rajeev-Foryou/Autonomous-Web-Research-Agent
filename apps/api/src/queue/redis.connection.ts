@@ -1,7 +1,10 @@
 import type { ConnectionOptions } from "bullmq";
+import type { RedisOptions } from "ioredis";
 import { env } from "../config/env";
 
-function parseRedisUrl(redisUrl: string): ConnectionOptions {
+const REDIS_RETRY_DELAY_CAP_MS = 3000;
+
+function parseRedisUrl(redisUrl: string): RedisOptions {
   const parsed = new URL(redisUrl);
 
   if (parsed.protocol !== "redis:" && parsed.protocol !== "rediss:") {
@@ -23,8 +26,18 @@ function parseRedisUrl(redisUrl: string): ConnectionOptions {
     db,
     tls: parsed.protocol === "rediss:" ? {} : undefined,
     maxRetriesPerRequest: null,
-    retryStrategy: (times: number) => Math.min(times * 100, 3000),
+    enableReadyCheck: false,
+    connectTimeout: 10000,
+    keepAlive: 10000,
+    retryStrategy: (times: number) => Math.min(times * 100, REDIS_RETRY_DELAY_CAP_MS),
+    reconnectOnError: (error: Error) => {
+      const message = error.message.toLowerCase();
+
+      return message.includes("econnreset") || message.includes("etimedout");
+    },
   };
 }
 
-export const redisConnection: ConnectionOptions = parseRedisUrl(env.redisUrl);
+export const redisOptions: RedisOptions = parseRedisUrl(env.redisUrl);
+
+export const redisConnection: ConnectionOptions = redisOptions as ConnectionOptions;
