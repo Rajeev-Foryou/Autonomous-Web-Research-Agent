@@ -30,6 +30,24 @@ function parsePort(rawValue: string | undefined): number {
   return parsed;
 }
 
+function parsePositiveInteger(
+  rawValue: string | undefined,
+  defaultValue: number,
+  variableName: string
+): number {
+  if (rawValue === undefined) {
+    return defaultValue;
+  }
+
+  const parsed = Number(rawValue);
+
+  if (!Number.isInteger(parsed) || parsed <= 0) {
+    throw new Error(variableName + " must be a positive integer");
+  }
+
+  return parsed;
+}
+
 function parseCorsAllowedOrigins(rawValue: string | undefined): string[] {
   if (!rawValue) {
     return [];
@@ -62,4 +80,7 @@ export const env = {
   redisUrl,
   corsAllowedOrigins,
   runMigrationsOnBoot: parseBoolean(process.env.RUN_MIGRATIONS_ON_BOOT, true),
+  rateLimitEnabled: parseBoolean(process.env.RATE_LIMIT_ENABLED, true),
+  rateLimitWindowMs: parsePositiveInteger(process.env.RATE_LIMIT_WINDOW_MS, 60000, "RATE_LIMIT_WINDOW_MS"),
+  rateLimitMaxRequests: parsePositiveInteger(process.env.RATE_LIMIT_MAX_REQUESTS, 60, "RATE_LIMIT_MAX_REQUESTS"),
 };

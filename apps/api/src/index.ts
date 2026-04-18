@@ -5,6 +5,7 @@ import researchRoutes from "./routes/research.routes";
 import { env } from "./config/env";
 import { ensureDatabaseReady, prisma } from "./bootstrap/db";
 import { logger } from "./lib/logger";
+import { createApiRateLimiter, shutdownApiRateLimiter } from "./middleware/rateLimit.middleware";
 
 const app = express();
 
@@ -29,7 +30,15 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use("/", healthRouter);
-app.use("/", researchRoutes);
+
+if (env.rateLimitEnabled) {
+  app.use("/", createApiRateLimiter(), researchRoutes);
+} else {
+  logger.warn({
+    stage: "api_rate_limit_disabled",
+  });
+  app.use("/", researchRoutes);
+}
 
 async function startApiServer(): Promise<void> {
   try {
@@ -43,11 +52,15 @@ async function startApiServer(): Promise<void> {
         stage: "api_booted",
         port: env.port,
         nodeEnv: env.nodeEnv,
+        rateLimitEnabled: env.rateLimitEnabled,
+        rateLimitWindowMs: env.rateLimitWindowMs,
+        rateLimitMaxRequests: env.rateLimitMaxRequests,
       });
     });
 
     const shutdown = async () => {
       server.close(async () => {
+        await shutdownApiRateLimiter().catch(() => undefined);
         await prisma.$disconnect().catch(() => undefined);
         process.exit(0);
       });

@@ -170,6 +170,9 @@ Recommended:
 
 - RUN_MIGRATIONS_ON_BOOT=true (API)
 - RUN_MIGRATIONS_ON_BOOT=false (worker)
+- RATE_LIMIT_ENABLED=true
+- RATE_LIMIT_WINDOW_MS=60000
+- RATE_LIMIT_MAX_REQUESTS=60
 - GROQ_TIMEOUT_MS=15000
 - LOG_LEVEL=info
 
@@ -338,8 +341,10 @@ Web scripts:
 - build
 - start
 
-## Deployed Link 
+## Deployed Link
+
 https://autonomous-web-research-agent-web.vercel.app/
+
 ## License
 
 No explicit license file is currently included in this repository. Add one before public distribution.

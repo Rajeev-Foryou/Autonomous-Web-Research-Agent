@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import Redis from "ioredis";
 import { prisma } from "../lib/prisma";
-import { env } from "../config/env";
+import { logger } from "../lib/logger";
+import { redisOptions } from "../queue/redis.connection";
 
 export const getHealth = async (_req: Request, res: Response): Promise<void> => {
   let redis: Redis | null = null;
@@ -9,9 +10,13 @@ export const getHealth = async (_req: Request, res: Response): Promise<void> => 
   try {
     await prisma.$executeRawUnsafe("SELECT 1");
 
-    redis = new Redis(env.redisUrl, {
-      maxRetriesPerRequest: 3,
-      retryStrategy: (times) => Math.min(times * 100, 3000),
+    redis = new Redis(redisOptions);
+    redis.on("error", (error) => {
+      logger.error({
+        jobId: null,
+        stage: "health_redis_error",
+        error: error.message,
+      });
     });
 
     await redis.ping();

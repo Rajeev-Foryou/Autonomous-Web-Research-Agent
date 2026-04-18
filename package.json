@@ -13,5 +13,8 @@
     "build:types": "npm run build -w @autonomous/types",
     "build:api": "npm run build:types && npm run build -w @autonomous/api",
     "build:web": "npm run build -w @autonomous/web"
+  },
+  "devDependencies": {
+    "@express-rate-limit/tsconfig": "^1.0.2"
   }
 }
