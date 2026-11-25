@@ -59,11 +59,38 @@ function parseCorsAllowedOrigins(rawValue: string | undefined): string[] {
     .filter((origin) => origin.length > 0);
 }
 
-const redisUrl = process.env.REDIS_URL?.trim();
+function resolveRedisUrl(): string {
+  const directUrl = process.env.REDIS_URL?.trim();
+  if (directUrl) {
+    return directUrl;
+  }
 
-if (!redisUrl) {
-  throw new Error("REDIS_URL is required");
+  const restUrl = process.env.UPSTASH_REDIS_REST_URL?.trim();
+  const restToken = (
+    process.env.UPSTASH_REDIS_REST_TOKEN ??
+    process.env.UPSTASH_REDIS_REST_PASSWORD
+  )?.trim();
+
+  if (restUrl && restToken) {
+    try {
+      const parsedRestUrl = new URL(restUrl);
+      const host = parsedRestUrl.hostname;
+      if (!host) {
+        throw new Error("Missing hostname");
+      }
+      const port = parsedRestUrl.port ? Number(parsedRestUrl.port) : 6379;
+      return `rediss://default:${encodeURIComponent(restToken)}@${host}:${port}`;
+    } catch {
+      throw new Error("UPSTASH_REDIS_REST_URL is invalid: " + restUrl);
+    }
+  }
+
+  throw new Error(
+    "REDIS_URL or both UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN are required"
+  );
 }
+
+const redisUrl = resolveRedisUrl();
 
 const nodeEnv = process.env.NODE_ENV?.trim() || "development";
 const isProduction = nodeEnv === "production";

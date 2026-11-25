@@ -1,5 +1,4 @@
 import { Worker } from "bullmq";
-import pLimit from "p-limit";
 import { env } from "../config/env";
 import { prisma } from "../lib/prisma";
 import { redisConnection } from "../queue/redis.connection";
@@ -31,6 +30,12 @@ function getErrorMessage(error: unknown): string {
 
   return String(error);
 }
+
+type AsyncLimiter = <T>(fn: () => Promise<T>) => Promise<T>;
+
+const scrapeLimitPromise: Promise<AsyncLimiter> = import("p-limit").then((module) => {
+  return module.default(4) as AsyncLimiter;
+});
 
 type ToolData = {
   name: string;
@@ -503,9 +508,6 @@ async function updateJobStage(jobId: string, currentStage: string, status?: Stat
   });
 }
 
-const scrapeLimit = pLimit(4);
-const extractionLimit = pLimit(3);
-
 const MAX_SOURCES = 5;
 const SUMMARIZER_SOURCE_TOKEN_BUDGET = 1000;
 const SUMMARIZER_MAX_OUTPUT_TOKENS = 1500;
@@ -746,6 +748,7 @@ const worker = new Worker<{ jobId: string; query: string }>(
           });
 
           const scrapeStart = Date.now();
+          const scrapeLimit = await scrapeLimitPromise;
           const scrapedResults = await Promise.all(
             uniqueResultsForInsert.map((result) =>
               scrapeLimit(async () => {

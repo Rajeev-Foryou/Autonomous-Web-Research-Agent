@@ -3492,3 +3492,4 @@
 {"level":30,"time":1774772887633,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":1232}
 {"level":30,"time":1774772887636,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","stage":"request_received"}
 {"level":30,"time":1774772888099,"pid":25572,"hostname":"Rajeev","route":"GET /research/:id","jobId":"4a156e24-2849-47dc-99b8-79ae73a3366b","totalMs":463}
+{"level":30,"time":1795595108176,"pid":23504,"hostname":"Rajeev","stage":"api_booted","port":4000,"nodeEnv":"development","rateLimitEnabled":true,"rateLimitWindowMs":60000,"rateLimitMaxRequests":60}
